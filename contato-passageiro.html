@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato Passageiro - SUPORTE TID</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Página Inicial</a></li>
+                <li><a href="atendimento.html">Atendimento</a></li>
+                <li><a href="cobranca.html">Cobrança</a></li>
+                <li><a href="avaliacoes.html">Avaliações</a></li>
+                <li><a href="avaliacoes-negativas.html">Avaliações Negativas</a></li>
+                <li><a href="esqueceu-pertence.html">Esqueceu Pertence</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="contato-passageiro">
+            <h1>Contato Passageiro</h1>
+            <form id="form-contato-passageiro">
+                <label for="telefone-passageiro">Número de Telefone do Passageiro:</label>
+                <input type="text" id="telefone-passageiro" name="telefone-passageiro" required>
+                
+                <label for="ocorrencia">Ocorrência do Passageiro:</label>
+                <textarea id="ocorrencia" name="ocorrencia" required></textarea>
+                
+                <label for="numero-os">Número da Ordem de Serviço:</label>
+                <input type="text" id="numero-os" name="numero-os" required>
+                
+                <label for="nome-motorista">Nome do Motorista:</label>
+                <input type="text" id="nome-motorista" name="nome-motorista" required>
+                
+                <button type="button" onclick="gerarMensagem()">Gerar Mensagem</button>
+            </form>
+            <div id="mensagem-final">
+                <h2>Mensagem Final:</h2>
+                <p id="mensagem-texto"></p>
+            </div>
+        </section>
+    </main>
+
+
+    <script>
+        function gerarMensagem() {
+            var telefone = document.getElementById('telefone-passageiro').value;
+            var ocorrencia = document.getElementById('ocorrencia').value;
+            var numeroOS = document.getElementById('numero-os').value;
+            var nomeMotorista = document.getElementById('nome-motorista').value;
+
+            var mensagem = `Olá ${telefone}! Tudo bem? Vimos que notificou o app na opção de objetos perdidos a seguinte ocorrência: "${ocorrencia}", referente a corrida O.S ${numeroOS}, com o(a) motorista ${nomeMotorista}. Gostaríamos de saber se houve retorno do(a) motorista, assim que possível poderia nos dar um retorno por favor? Desde já agradecemos pela atenção, tenha um ótimo dia 😁`;
+
+            document.getElementById('mensagem-texto').innerText = mensagem;
+        }
+    </script>
+</body>
+</html>

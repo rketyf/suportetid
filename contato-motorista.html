@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato Motorista - SUPORTE TID</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Página Inicial</a></li>
+                <li><a href="atendimento.html">Atendimento</a></li>
+                <li><a href="cobranca.html">Cobrança</a></li>
+                <li><a href="avaliacoes.html">Avaliações</a></li>
+                <li><a href="avaliacoes-negativas.html">Avaliações Negativas</a></li>
+                <li><a href="esqueceu-pertence.html">Esqueceu Pertence</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="contato-motorista">
+            <h1>Contato Motorista</h1>
+            <form id="form-contato-motorista">
+                <label for="nome-motorista">Nome do Motorista:</label>
+                <input type="text" id="nome-motorista" name="nome-motorista" required>
+                
+                <label for="telefone-motorista">Número de Telefone do Motorista:</label>
+                <input type="text" id="telefone-motorista" name="telefone-motorista" required>
+                
+                <label for="numero-os">Número da Ordem de Serviço:</label>
+                <input type="text" id="numero-os" name="numero-os" required>
+                
+                <label for="data-corrida">Data da Corrida:</label>
+                <input type="date" id="data-corrida" name="data-corrida" required>
+                
+                <label for="objeto-esquecido">Objeto Esquecido:</label>
+                <input type="text" id="objeto-esquecido" name="objeto-esquecido" required>
+                
+                <button type="button" onclick="gerarMensagem()">Gerar Mensagem</button>
+            </form>
+            <div id="mensagem-final">
+                <h2>Mensagem Final:</h2>
+                <p id="mensagem-texto"></p>
+            </div>
+        </section>
+    </main>
+  
+
+    <script>
+        function formatarData(data) {
+            var partes = data.split('-');
+            return partes[2] + '/' + partes[1] + '/' + partes[0];
+        }
+
+        function gerarMensagem() {
+            var nomeMotorista = document.getElementById('nome-motorista').value;
+            var telefoneMotorista = document.getElementById('telefone-motorista').value;
+            var numeroOS = document.getElementById('numero-os').value;
+            var dataCorrida = document.getElementById('data-corrida').value;
+            var objetoEsquecido = document.getElementById('objeto-esquecido').value;
+
+            var dataCorridaFormatada = formatarData(dataCorrida);
+
+            var mensagem = `Olá ${nomeMotorista}, ${telefoneMotorista}! Tudo bem? O(a) passageiro da corrida O.S ${numeroOS}, no dia ${dataCorridaFormatada}, entrou em contato conosco pois poderia ter esquecido ${objetoEsquecido}, no carro do(a) senhor(a), poderia verificar por favor?`;
+
+            document.getElementById('mensagem-texto').innerText = mensagem;
+        }
+    </script>
+</body>
+</html>

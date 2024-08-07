@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avaliações Negativas - SUPORTE TID</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Página Inicial</a></li>
+                <li><a href="atendimento.html">Atendimento</a></li>
+                <li><a href="cobranca.html">Cobrança</a></li>
+                <li><a href="avaliacoes.html">Avaliações</a></li>
+                <li><a href="avaliacoes-negativas.html">Avaliações Negativas</a></li>
+                <li><a href="esqueceu-pertence.html">Esqueceu Pertence</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="avaliacoes-negativas">
+            <h1>Avaliações Negativas</h1>
+            <form id="form-avaliacoes-negativas">
+                <label for="telefone-passageiro">Número de Telefone do Passageiro:</label>
+                <input type="text" id="telefone-passageiro" name="telefone-passageiro" required>
+                
+                <label for="nome-motorista">Nome do Motorista:</label>
+                <input type="text" id="nome-motorista" name="nome-motorista" required>
+                
+                <label for="numero-os">Número da Ordem de Serviço:</label>
+                <input type="text" id="numero-os" name="numero-os" required>
+                
+                <button type="button" onclick="gerarMensagem()">Gerar Mensagem</button>
+            </form>
+            <div id="mensagem-final">
+                <h2>Mensagem Final:</h2>
+                <p id="mensagem-texto"></p>
+            </div>
+        </section>
+    </main>
+
+
+    <script>
+        function gerarMensagem() {
+            var telefone = document.getElementById('telefone-passageiro').value;
+            var nomeMotorista = document.getElementById('nome-motorista').value;
+            var numeroOS = document.getElementById('numero-os').value;
+
+            var mensagem = `Olá ${telefone}, tudo bem? Meu nome é Aila e falo da central do aplicativo TOINDO. Observamos uma avaliação de 1 estrela para nosso(a) motorista ${nomeMotorista} no dia de hoje, referente a corrida O.S ${numeroOS}. Gostaríamos de saber se houve algo que não te agradou, pois seu feedback é muito importante para nós para que possamos melhorar nosso serviço com nossos passageiros. Desde já agradecemos pela atenção, tenha um ótimo dia 😄`;
+
+            document.getElementById('mensagem-texto').innerText = mensagem;
+        }
+    </script>
+</body>
+</html>

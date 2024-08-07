@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Não Encontrou Objeto Perdido - SUPORTE TID</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Página Inicial</a></li>
+                <li><a href="atendimento.html">Atendimento</a></li>
+                <li><a href="cobranca.html">Cobrança</a></li>
+                <li><a href="avaliacoes.html">Avaliações</a></li>
+                <li><a href="avaliacoes-negativas.html">Avaliações Negativas</a></li>
+                <li><a href="esqueceu-pertence.html">Esqueceu Pertence</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="nao-encontrou-objeto-perdido">
+            <h1>Não Encontrou Objeto Perdido</h1>
+            <form id="form-nao-encontrou-objeto-perdido">
+                <label for="telefone-passageiro">Número de Telefone do Passageiro:</label>
+                <input type="text" id="telefone-passageiro" name="telefone-passageiro" required>
+                
+                <label for="data-corrida">Data da Corrida:</label>
+                <input type="date" id="data-corrida" name="data-corrida" required>
+                
+                <label for="objeto-relatado">Objeto Relatado:</label>
+                <input type="text" id="objeto-relatado" name="objeto-relatado" required>
+                
+                <label for="nome-motorista">Nome do Motorista:</label>
+                <input type="text" id="nome-motorista" name="nome-motorista" required>
+                
+                <label for="numero-os">Número da Ordem de Serviço:</label>
+                <input type="text" id="numero-os" name="numero-os" required>
+                
+                <button type="button" onclick="gerarMensagem()">Gerar Mensagem</button>
+            </form>
+            <div id="mensagem-final">
+                <h2>Mensagem Final:</h2>
+                <p id="mensagem-texto"></p>
+            </div>
+        </section>
+    </main>
+ 
+
+    <script>
+        function formatarData(data) {
+            var partes = data.split('-');
+            return partes[2] + '/' + partes[1] + '/' + partes[0];
+        }
+
+        function gerarMensagem() {
+            var telefonePassageiro = document.getElementById('telefone-passageiro').value;
+            var dataCorrida = document.getElementById('data-corrida').value;
+            var objetoRelatado = document.getElementById('objeto-relatado').value;
+            var nomeMotorista = document.getElementById('nome-motorista').value;
+            var numeroOS = document.getElementById('numero-os').value;
+
+            var dataCorridaFormatada = formatarData(dataCorrida);
+
+            var mensagem = `Olá ${telefonePassageiro}! Tudo bem? Vimos que no dia ${dataCorridaFormatada}, o(a) senhor(a) reportou no app que poderia ter esquecido ${objetoRelatado} no carro do(a) nosso motorista ${nomeMotorista}, referente a corrida O.S ${numeroOS}. Entramos em contato com ele(a), porém ele(a) infelizmente não encontrou! Se precisar de algo mais pode entrar em contato 🙏`;
+
+            document.getElementById('mensagem-texto').innerText = mensagem;
+        }
+    </script>
+</body>
+</html>

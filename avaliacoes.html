@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avaliações - SUPORTE TID</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Página Inicial</a></li>
+                <li><a href="atendimento.html">Atendimento</a></li>
+                <li><a href="cobranca.html">Cobrança</a></li>
+                <li><a href="avaliacoes.html">Avaliações</a></li>
+                <li><a href="avaliacoes-negativas.html">Avaliações Negativas</a></li>
+                <li><a href="esqueceu-pertence.html">Esqueceu Pertence</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="avaliacoes">
+            <h1>Avaliações</h1>
+            <form id="form-avaliacoes">
+                <label for="telefone-passageiro">Número de Telefone do Passageiro:</label>
+                <input type="text" id="telefone-passageiro" name="telefone-passageiro" required>
+                
+                <label for="nome-motorista">Nome do Motorista:</label>
+                <input type="text" id="nome-motorista" name="nome-motorista" required>
+                
+                <label for="numero-os">Número da Ordem de Serviço:</label>
+                <input type="text" id="numero-os" name="numero-os" required>
+                
+                <button type="button" onclick="gerarMensagem()">Gerar Mensagem</button>
+            </form>
+            <div id="mensagem-final">
+                <h2>Mensagem Final:</h2>
+                <p id="mensagem-texto"></p>
+            </div>
+        </section>
+    </main>
+
+
+    <script>
+        function gerarMensagem() {
+            var telefone = document.getElementById('telefone-passageiro').value;
+            var nomeMotorista = document.getElementById('nome-motorista').value;
+            var numeroOS = document.getElementById('numero-os').value;
+
+            var mensagem = `Olá ${telefone}! Tudo bem? Somos aqui do suporte da TOINDO, estamos em contato pois vimos que finalizou uma corrida com nosso(a) motorista ${nomeMotorista}, referente a O.S ${numeroOS}. Gostaríamos de saber como foi sua experiência com nosso(a) parceiro(a), assim que possível poderia nos dar um retorno por favor? Sua avaliação é muito importante para nós!! Desde já agradecemos pela atenção, tenha um ótimo dia 😄`;
+
+            document.getElementById('mensagem-texto').innerText = mensagem;
+        }
+    </script>
+</body>
+</html>
