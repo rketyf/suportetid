@@ -42,8 +42,26 @@
                 <p id="mensagem-texto"></p>
             </div>
         </section>
+        <section id="pendencia-os">
+            <h2>Pendência no Pagamento</h2>
+            <form id="pendenciaForm">
+                <label for="pendenciaNumeroOs">Número da O.S:</label>
+                <input type="text" id="pendenciaNumeroOs" placeholder="Digite o número da O.S" required>
+                
+                <label for="chavePix">Chave Pix do Motorista:</label>
+                <input type="text" id="chavePix" placeholder="Digite a chave Pix do motorista" required>
+                
+                <label for="valorCorrida">Valor da Corrida (R$):</label>
+                <input type="text" id="valorCorrida" placeholder="Digite o valor da corrida" step="0.01" required>
+                
+                <button type="button" onclick="gerarPendenciaMensagem()">Gerar Mensagem de Pendência</button>
+            </form>
+            <div id="pendenciaMensagem">
+                <h2>Mensagem de Pendência:</h2>
+                <p id="pendenciaTexto"></p>
+            </div>
+        </section>
     </main>
- 
 
     <script>
         function formatarData(data) {
@@ -67,6 +85,22 @@
             
             document.getElementById('mensagem-texto').innerText = mensagem;
         }
+
+        function gerarPendenciaMensagem() {
+            var numeroOs = document.getElementById('pendenciaNumeroOs').value;
+            var chavePix = document.getElementById('chavePix').value;
+            var valorCorrida = document.getElementById('valorCorrida').value;
+
+            if (numeroOs && chavePix && valorCorrida) {
+                document.getElementById('pendenciaTexto').innerText = 
+                    `Pendência no pagamento da O.S ${numeroOs}. O valor da corrida é R$ ${parseFloat(valorCorrida).toFixed(2)}. ` +
+                    `Por favor, efetue o pagamento para a chave Pix: ${chavePix}.`;
+            } else {
+                document.getElementById('pendenciaTexto').innerText = 
+                    'Por favor, preencha todos os campos.';
+            }
+        }
     </script>
 </body>
 </html>
+
